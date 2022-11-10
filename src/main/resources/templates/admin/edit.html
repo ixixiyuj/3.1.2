@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+</head>
+<body>
+
+<h2>Обновить информацию</h2>
+<form action="#" th:action="@{/admin/edit/{id}(id=${user.getId()})}"  th:object="${user}" method="post">
+    <label for="id">Id</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <label for="username">Логин</label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <br/>
+    <label for="password">Пароль </label>
+
+    <input class="form-control" type="password" th:field="*{password}" id="password"/>
+
+    <br/>
+    <br>
+    <input type="checkbox"
+           name="roleAdmin"
+           th:checked="${checked}"
+           th:value="ROLE_ADMIN"
+           th:text=" Администратор">
+
+
+    <input type="submit" value="Обновить информацию">
+</form>
+<!--<a th:href="@{/admin/new_pass/{id}(id=*{user.getId()})}"><input type="submit" value="Изменить пароль"/></a>-->
+
+<br/>
+<button class="buttonLogout" onclick="window.location.href = '/logout';">Выйти</button>
+</body>
+</html>
